@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        
+        <record model="ir.ui.view" id="user_ocupation_form_view">
+            <field name="name">user.ocupation</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Practices">
+                        <group>
+                            <field name="is_pupil" attrs="{'invisible':[('is_teacher','=',True)]}"/>
+                            <field name="is_teacher" attrs="{'invisible':[('is_pupil','=',True)]}"/>
+                            <field name="my_pupils" attrs="{'invisible':[('is_teacher','!=',True)]}" />
+                            <field name="my_teacher" attrs="{'invisible':[('is_pupil','!=',True)]}" />
+                            <field name="my_fctpartner" attrs="{'invisible':[('is_pupil','!=',True)]}" />
+                            <field name="pupils_activities" attrs="{'invisible':[('is_pupil','!=',True)]}" />
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record> 
+        
+    </data>
+</odoo>
