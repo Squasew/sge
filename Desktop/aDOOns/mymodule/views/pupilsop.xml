@@ -12,6 +12,7 @@
                         <group>
                             <field name="name"/>
                             <field name="pupil_activity" readonly="1"/>
+                            <field name="date" readonly="1"/>
                             <field name="hours"/>
                             <notebook>
                                 <page string="Description">
@@ -32,6 +33,7 @@
             <field name="res_model">pupilsop.activity</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+            <field name="domain">[('name','=','user.id')]</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Create the first activity</p>
             </field>

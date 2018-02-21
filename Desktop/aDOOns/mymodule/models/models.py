@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api, exceptions
+from datetime import datetime
 
 class Activity (models.Model):
     
     _name = 'pupilsop.activity'
     
     name = fields.Char(string="Title", required=True)
+    date = fields.Date(string="Date", default=datetime.today())
     description = fields.Text()
     remarks = fields.Text()
     hours = fields.Float(string="Duration of the activity")
@@ -20,8 +22,11 @@ class Activity (models.Model):
                 raise exceptions.ValidationError("An activity can't have more than 8 hours")
                 
     
-    #@api.constrains('is_pupil','is_teacher')
-    #def _verify_is_not_both(self):
-    #    for r in self:
-    #        if r.is_pupil and r.is_teacher:
-    #            raise exceptions.ValidationError("Can't have both profiles at the same time")
+#    @api.constrains('hours','date')
+#    def _verify_hours_day(self):
+#        hoursDate = fields.Float()
+#            for record in self:
+##            if record.date = date:
+##                hoursDate = hoursDate + record.hours
+##        if hoursDate > 8:
+##                raise exceptions.ValidationError("Adding activity the day has more than 8 hours in activities")
